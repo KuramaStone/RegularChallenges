@@ -1,0 +1,485 @@
+config-version: 1
+
+pools:
+  # These are examples of the "capture_pokemon" challenge. Called when capturing Pokemon in or out of battle.
+  capture_pokemon_example: # Pool ID
+    very_specific_grass_pokemon: # Challenge Template ID
+      weight: 1
+      type: capture_pokemon
+      # This can be converted into a list for multiple permissible options.
+      properties: "hasType=fire minLevel=10 timeOfDay=0/12000 inBiome=minecraft:plains pokeball=cobblemon:master_ball"
+      amount: 30
+      rewards:
+        - give {player} diamond
+      menu:
+        board_view:
+          type: cobblemon:poke_ball
+          hide-tooltip: true
+          custom-model-data: 0
+          display-name: "<yellow>Capture {amount} Pokemon!"
+          lore:
+            - ""
+            - "<gold>Capture {amount} level 10+ fire type Pokemon, during the day, in a plains biome, using a masterball."
+            - ""
+            - "<aqua>{total_played_completed} <dark_aqua>players have beaten this challenge so far!"
+            - "<gold>Progress: {self_progress}/{amount} Captured!"
+    water_pokemon:
+      weight: 1
+      type: capture_pokemon
+      # This can be converted into a list for multiple permissible options.
+      properties: "hasType=water minLevel=10"
+      amount: 30
+      rewards:
+        - give {player} diamond
+      menu:
+        board_view:
+          type: cobblemon:poke_ball
+          hide-tooltip: true
+          custom-model-data: 0
+          display-name: "<yellow>Capture {amount} Pokemon!"
+          lore:
+            - ""
+            - "<gold>Capture {amount} level 10+ water type Pokemon!"
+            - ""
+            - "<aqua>{total_played_completed} <dark_aqua>players have beaten this challenge so far!"
+            - "<gold>Progress: {self_progress}/{amount} Captured!"
+    fire_pokemon:
+      weight: 1
+      type: capture_pokemon
+      # This can be converted into a list for multiple permissible options.
+      properties: "hasType=grass minLevel=10"
+      amount: 30
+      rewards:
+        - give {player} diamond
+      menu:
+        board_view:
+          type: cobblemon:poke_ball
+          hide-tooltip: true
+          custom-model-data: 0
+          display-name: "<yellow>Capture {amount} Pokemon!"
+          lore:
+            - ""
+            - "<gold>Capture {amount} level 10+ grass type Pokemon!"
+            - ""
+            - "<aqua>{total_played_completed} <dark_aqua>players have beaten this challenge so far!"
+            - "<gold>Progress: {self_progress}/{amount} Captured!"
+
+  # These are examples of the "break_block" challenge. Called after a player breaks a block.
+  break_block_example:
+    mine_any_blocks:
+      weight: 1
+      type: break_block
+      amount: 256
+      rewards:
+        - give {player} diamond
+      menu:
+        board_view:
+          type: minecraft:diamond_pickaxe
+          display-name: "<yellow>Break Any Block!"
+          lore:
+            - ""
+            - "<gold>Break any block!"
+            - ""
+            - "<aqua>{total_played_completed} <dark_aqua>players have beaten this challenge so far!"
+            - "<gold>Progress: {self_progress}/{amount} Broken!"
+    mine_diamond_ore:
+      weight: 1
+      type: break_block
+      # This can be converted into a list for multiple permissible options.
+      properties: "minecraft:diamond_ore"
+      ignore-silk-touch: true # If set to true, silk touch tools will not be included.
+      amount: 256
+      rewards:
+        - give {player} diamond
+      menu:
+        board_view:
+          type: minecraft:diamond_pickaxe
+          display-name: "<yellow>Break Diamond Ore!"
+          lore:
+            - ""
+            - "<gold>Break diamond ore without using Silk Touch!"
+            - ""
+            - "<aqua>{total_played_completed} <dark_aqua>players have beaten this challenge so far!"
+            - "<gold>Progress: {self_progress}/{amount} Broken!"
+
+  # These are examples of the "win_battle" challenge. These are called for all victors of a battle against all losers.
+  win_battle_example:
+    win_very_specific_battle:
+      weight: 1
+      type: win_battle
+      amount: 1
+      battle-type: "wild/npc/player" # The enemy must be at least one of these
+      # This can be converted into a list for multiple permissible options.
+      self-properties: "hasType=water levelRange=0/20" # The player's team MUST have one Pokemon matching this
+      # This can be converted into a list for multiple permissible options.
+      enemy-properties: "hasType=fire levelRange=0/20" # Any enemy Pokemon MUST have one Pokemon matching this
+      rewards:
+        - give {player} diamond
+      menu:
+        board_view:
+          type: cobblemon:master_ball
+          hide-tooltip: true
+          display-name: "<yellow>Win a Battle!"
+          lore:
+            - ""
+            - "<gold>  Win a battle using a water Pokemon below"
+            - "<gold>level 20 against a fire type below level 20!"
+            - ""
+            - "<aqua>{total_played_completed} <dark_aqua>players have beaten this challenge so far!"
+            - "<gold>Progress: {self_progress}/{amount} Defeated!"
+
+  # These are examples of the "evolve_pokemon" challenge. These are called when a player's Pokemon evolves.
+  evolve_pokemon_example:
+    evolve_very_specific:
+      weight: 1
+      type: evolve_pokemon
+      # This can be converted into a list for multiple permissible options.
+      post-evolution-properties: "raichu"
+      rewards:
+        - give {player} diamond
+      menu:
+        board_view:
+          type: cobblemon:thunder_stone
+          hide-tooltip: true
+          display-name: "<yellow>Evolve a Raichu!"
+          lore:
+            - ""
+            - "<gold>Evolve your Pikachu into a Raichu!"
+            - ""
+            - "<aqua>{total_played_completed} <dark_aqua>players have beaten this challenge so far!"
+            - "<gold>Progress: {self_progress}/{amount} Defeated!"
+
+  # These are examples of the "place_block" challenge. These are called when a player places a block.
+  place_block_example:
+    place_any_blocks:
+      weight: 1
+      type: place_block
+      amount: 256
+      rewards:
+        - give {player} diamond
+      menu:
+        board_view:
+          type: minecraft:grass_block
+          display-name: "<yellow>Place any blocks"
+          lore:
+            - ""
+            - "<gold>Place {amount} blocks!"
+            - ""
+            - "<aqua>{total_played_completed} <dark_aqua>players have beaten this challenge so far!"
+            - "<gold>Progress: {self_progress}/{amount} Placed!"
+    plant_carrots:
+      weight: 1
+      type: place_block
+      # This can be converted into a list for multiple permissible options.
+      properties: "minecraft:carrots[age=1]"
+      amount: 256
+      rewards:
+        - give {player} diamond
+      menu:
+        board_view:
+          type: minecraft:carrot
+          display-name: "<yellow>Plant carrots!"
+          lore:
+            - ""
+            - "<gold>Plant {amount} carrots!"
+            - ""
+            - "<aqua>{total_played_completed} <dark_aqua>players have beaten this challenge so far!"
+            - "<gold>Progress: {self_progress}/{amount} Planted!"
+    plant_potatoes:
+      weight: 1
+      type: place_block
+      # This can be converted into a list for multiple permissible options.
+      properties: "minecraft:potatoes[age=1]"
+      amount: 256
+      rewards:
+        - give {player} diamond
+      menu:
+        board_view:
+          type: minecraft:potato
+          display-name: "<yellow>Plant potatoes!"
+          lore:
+            - ""
+            - "<gold>Plant {amount} potatoes!"
+            - ""
+            - "<aqua>{total_played_completed} <dark_aqua>players have beaten this challenge so far!"
+            - "<gold>Progress: {self_progress}/{amount} Planted!"
+
+  # These are examples of the "harvest_apricorn" challenge. These are called when a player clicks on an apricorn
+  harvest_apricorn_example:
+    harvest_any_apricorn:
+      weight: 1
+      type: harvest_apricorn
+      amount: 64
+      menu:
+        board_view:
+          type: cobblemon:apricorn_leaves
+          display-name: "<yellow>Harvest Apricorns!"
+          lore:
+            - ""
+            - "<gold>Harvest {amount} Apricorns!"
+            - ""
+            - "<aqua>{total_played_completed} <dark_aqua>players have beaten this challenge so far!"
+            - "<gold>Progress: {self_progress}/{amount} Harvested!"
+    harvest_pink_apricorn:
+      weight: 1
+      type: harvest_apricorn
+      amount: 64
+      # This can be converted into a list for multiple permissible options.
+      apricorn-type: pink
+      menu:
+        board_view:
+          type: cobblemon:pink_apricorn
+          display-name: "<light_purple>Harvest Pink Apricorns!"
+          lore:
+            - ""
+            - "<gold>Harvest {amount} Apricorns!"
+            - ""
+            - "<aqua>{total_played_completed} <dark_aqua>players have beaten this challenge so far!"
+            - "<gold>Progress: {self_progress}/{amount} Harvested!"
+
+  # These are examples of the "harvest_apricorn" challenge. These are called for every berry gained from a plant - not just from each harvest.
+  harvest_berry_example:
+    harvest_any_berry:
+      weight: 1
+      type: harvest_berry
+      amount: 64
+      menu:
+        board_view:
+          type: cobblemon:berry_juice
+          hide-tooltip: true
+          display-name: "<yellow>Harvest Berries!"
+          lore:
+            - ""
+            - "<gold>Harvest {amount} Berries!"
+            - ""
+            - "<aqua>{total_played_completed} <dark_aqua>players have beaten this challenge so far!"
+            - "<gold>Progress: {self_progress}/{amount} Harvested!"
+    harvest_oran_berry:
+      weight: 1
+      # This can be converted into a list for multiple permissible options.
+      type: harvest_berry
+      berry-type: cobblemon:oran_berry # Specify the berry using its full legal name
+      amount: 64
+      menu:
+        board_view:
+          type: cobblemon:oran_berry
+          hide-tooltip: true
+          display-name: "<yellow>Harvest Oran Berries!"
+          lore:
+            - ""
+            - "<gold>Harvest {amount} Oran Berries!"
+            - ""
+            - "<aqua>{total_played_completed} <dark_aqua>players have beaten this challenge so far!"
+            - "<gold>Progress: {self_progress}/{amount} Harvested!"
+
+  # These are examples of the "playtime" challenge. This tracks how many seconds the player has played
+  playtime_example:
+    playtime_challenge:
+      weight: 1
+      type: playtime
+      amount: 3600 # One hour
+      menu:
+        board_view:
+          type: minecraft:clock
+          display-name: "<yellow>Play One Hour!"
+          lore:
+            - ""
+            - "<gold>Play for one hour!"
+            - ""
+            - "<aqua>{total_played_completed} <dark_aqua>players have beaten this challenge so far!"
+            - "<gold>Progress: {self_progress}/{amount} Harvested!"
+
+  # These are examples of the "item_on_pokemon" challenge. This is for item usage on a Pokemon.
+  item_on_pokemon_example:
+    use_oranberry_any_pokemon:
+      weight: 1
+      type: item_on_pokemon
+      # This can be converted into a list for multiple permissible options.
+      item: cobblemon:oran_berry
+      amount: 1 # One hour
+      menu:
+        board_view:
+          type: cobblemon:oran_berry
+          hide-tooltip: true
+          display-name: "<yellow>Feed Berry"
+          lore:
+            - ""
+            - "<gold>Feed an Oran Berry to your Pokemon by hand!"
+            - ""
+            - "<aqua>{total_played_completed} <dark_aqua>players have beaten this challenge so far!"
+            - "<gold>Progress: {self_progress}/{amount} Fed!"
+    use_sitrusberry_on_pikachu:
+      weight: 1
+      type: item_on_pokemon
+      # This can be converted into a list for multiple permissible options.
+      item: cobblemon:sitrus_berry
+      # This can be converted into a list for multiple permissible options.
+      properties:
+        - "pikachu levelRange=0/100"
+        - "raichu levelRange=0/100"
+      amount: 1
+      menu:
+        board_view:
+          type: cobblemon:sitrus_berry
+          hide-tooltip: true
+          display-name: "<yellow>Feed Pikachu!"
+          lore:
+            - ""
+            - "<gold>Feed a Sitrus Berry to Pikachu!"
+            - ""
+            - "<aqua>{total_played_completed} <dark_aqua>players have beaten this challenge so far!"
+            - "<gold>Progress: {self_progress}/{amount} Fed!"
+    consume_redstone_torch_on_pikachu:
+      weight: 1
+      type: item_on_pokemon
+      item: minecraft:redstone_torch
+      # This can be converted into a list for multiple permissible options.
+      properties: "pikachu levelRange=0/100"
+      force-consume: true # If true, then this will forcefully consume the item.
+      amount: 16
+      menu:
+        board_view:
+          type: minecraft:redstone_torch
+          display-name: "<yellow>Feed Pikachu!"
+          lore:
+            - ""
+            - "<gold>Feed Pikachu some redstone torches!"
+            - ""
+            - "<aqua>{total_played_completed} <dark_aqua>players have beaten this challenge so far!"
+            - "<gold>Progress: {self_progress}/{amount} Fed!"
+
+  # These are examples of the "level_up" challenge.
+  level_up_challenge:
+    level_any:
+      weight: 1
+      type: level_up
+      amount: 20
+      menu:
+        board_view:
+          type: cobblemon:rare_candy
+          hide-tooltip: true
+          display-name: "<yellow>Level Up!"
+          lore:
+            - ""
+            - "<gold>Level Up your Pikachu {amount} times!"
+            - ""
+            - "<aqua>{total_played_completed} <dark_aqua>players have beaten this challenge so far!"
+            - "<gold>Progress: {self_progress}/{amount} Levels Gained!"
+    level_shiny_pikachu:
+      weight: 1
+      type: level_up
+      amount: 100
+      # This can be converted into a list for multiple permissible options.
+      properties: "pikachu shiny=true"
+      menu:
+        board_view:
+          type: cobblemon:rare_candy
+          hide-tooltip: true
+          display-name: "<yellow>Level Up!"
+          lore:
+            - ""
+            - "<gold>Level Up your Shiny Pikachu {amount} times!"
+            - ""
+            - "<aqua>{total_played_completed} <dark_aqua>players have beaten this challenge so far!"
+            - "<gold>Progress: {self_progress}/{amount} Levels Gained!"
+
+  # These are examples of the "exp_gained" challenge.
+  exp_gained_challenge:
+    exp_gained_any:
+      weight: 1
+      type: exp_gained
+      amount: 100000
+      menu:
+        board_view:
+          type: cobblemon:exp_candy_l
+          hide-tooltip: true
+          display-name: "<yellow>EXP Farming!"
+          lore:
+            - ""
+            - "<gold>Gain 100,000 EXP!"
+            - ""
+            - "<aqua>{total_played_completed} <dark_aqua>players have beaten this challenge so far!"
+            - "<gold>Progress: {self_progress}/{amount} EXP Gained!"
+    exp_gain_shiny:
+      weight: 1
+      type: exp_gained
+      amount: 100
+      # This can be converted into a list for multiple permissible options.
+      properties: "shiny=true"
+      menu:
+        board_view:
+          type: cobblemon:exp_candy_xl
+          hide-tooltip: true
+          display-name: "<yellow>EXP Farming!"
+          lore:
+            - ""
+            - "<gold>Earn 10,000 EXP for any Shiny Pokemon!"
+            - ""
+            - "<aqua>{total_played_completed} <dark_aqua>players have beaten this challenge so far!"
+            - "<gold>Progress: {self_progress}/{amount} EXP Gained!"
+
+  # These are examples of the "kill_entity" challenge.
+  kill_entity_challenge:
+    kill_entity_any:
+      weight: 1
+      type: kill_entity
+      amount: 1
+      menu:
+        board_view:
+          type: minecraft:diamond_sword
+          display-name: "<yellow>Kill Mobs!"
+          lore:
+            - ""
+            - "<gold>Kill {amount} of any Mob!"
+            - ""
+            - "<aqua>{total_played_completed} <dark_aqua>players have beaten this challenge so far!"
+            - "<gold>Progress: {self_progress}/{amount} Mobs Slain!"
+    kill_entity_specific:
+      weight: 1
+      type: kill_entity
+      amount: 1
+      entity:
+        - 'minecraft:villager/{"id":"minecraft:villager","VillagerData":{"profession":"minecraft:farmer"}}'
+      menu:
+        board_view:
+          type: minecraft:villager_spawn_egg
+          display-name: "<yellow>Kill A Farmer Villager!"
+          lore:
+            - ""
+            - "<gold>Kill {amount} Farmer Villager!"
+            - ""
+            - "<aqua>{total_played_completed} <dark_aqua>players have beaten this challenge so far!"
+            - "<gold>Progress: {self_progress}/{amount} Widows Generated!"
+
+  hatch_egg_examples:
+    hatch_any_egg:
+      weight: 1
+      type: hatch_egg
+      amount: 1
+      menu:
+        board_view:
+          type: minecraft:turtle_egg
+          display-name: "<yellow>Hatch any Egg!"
+          lore:
+            - ""
+            - "<gold>Hatch any Pokemon Egg!"
+            - ""
+            - "<aqua>{total_played_completed} <dark_aqua>players have beaten this challenge so far!"
+            - "<gold>Progress: {self_progress}/{amount} Eggs Hatched!"
+    hatch_pichu_pikachu_egg:
+      weight: 1
+      type: hatch_egg
+      properties:
+        - "pichu"
+        - "pikachu"
+      amount: 1
+      menu:
+        board_view:
+          type: minecraft:turtle_egg
+          display-name: "<yellow>Hatch a Pikachu!"
+          lore:
+            - ""
+            - "<gold>Hatch a Pichu or a Pikachu!"
+            - ""
+            - "<aqua>{total_played_completed} <dark_aqua>players have beaten this challenge so far!"
+            - "<gold>Progress: {self_progress}/{amount} Eggs Hatched!"

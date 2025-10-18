@@ -1,0 +1,5 @@
+accessWidener v2 named
+
+accessible field net/minecraft/commands/arguments/blocks/BlockInput tag Lnet/minecraft/nbt/CompoundTag;
+accessible field net/minecraft/commands/arguments/item/ItemInput item Lnet/minecraft/core/Holder;
+accessible field net/minecraft/commands/arguments/item/ItemInput components Lnet/minecraft/core/component/DataComponentPatch;

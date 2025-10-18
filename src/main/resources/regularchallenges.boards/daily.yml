@@ -1,0 +1,41 @@
+id: daily
+display-name: <yellow>Daily</yellow>
+
+# The order of challenges here will be in the same order as they are listed
+gui:
+  window-name: "Daily Challenges"
+  structure:
+    - "# # # # # # # # #"
+    - "# # 1 # 2 # 3 # #"
+    - "# # # # # # # # #"
+  ingredients:
+    '#':
+      type: minecraft:black_stained_glass_pane
+      custom-model-data: 0
+      display-name: "<gradient:#ff3333:#ff6e00>Regular Challenges"
+
+# How often this board resets
+reset-interval: 24h
+# The start time of the interval. FORMAT MUST BE "YYYY-DD-MM HH:mm:ss EST"
+interval-start: "2025-01-01 18:00:00 America/New_York"
+
+# Insert the challenges for this board. The "gui_key" refers to the structure in the gui.
+pool-per-challenge:
+  pool_id_0: # Pool Entry Id
+    weight: 1.0
+    gui_key: 1
+    pool_entries:
+      - id: capture_pokemon_example
+        weight: 1
+  pool_id_1: # Pool Entry Id
+    weight: 1.0
+    gui_key: 2
+    pool_entries:
+      - id: break_block_example
+        weight: 1
+  pool_id_2: # Pool Entry Id
+    weight: 1.0
+    gui_key: 3
+    pool_entries:
+      - id: win_battle_example
+        weight: 1

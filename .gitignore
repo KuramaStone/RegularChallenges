@@ -1,0 +1,9 @@
+.git/
+.gradle/
+.idea/
+.kotlin/
+build/
+run/
+runClient/
+src/main/kotlin
+src/main/java

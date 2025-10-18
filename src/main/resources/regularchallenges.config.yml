@@ -1,0 +1,32 @@
+config-version: 1
+
+boards-view-menu:
+  window-name: "<gradient:#ff3333:#ff6e00>Regular Challenges"
+  structure:
+    - "# # # # # # # # #"
+    - "# # # # 1 # # # #"
+    - "# # # # # # # # #"
+  ingredients:
+    '#':
+      type: minecraft:black_stained_glass_pane
+      custom-model-data: 0
+      display-name: "<gradient:#ff3333:#ff6e00>Regular Challenges"
+      hide-tooltip: true
+    '1':
+      type: minecraft:birch_hanging_sign
+      display-name: "<aqua>Today's Challenges"
+      lore:
+        - "<dark_aqua>These reset each day at 6PM EST! Complete them now to earn rewards!"
+      board: "daily"
+#    '2':
+#      type: minecraft:dark_oak_hanging_sign
+#      display-name: "<yellow>This Week's Challenges"
+#      lore:
+#        - "<gold>These reset each week on Monday 6PM EST! Complete them now to earn rewards!"
+#      board: "weekly"
+#    '3':
+#      type: minecraft:mangrove_hanging_sign
+#      display-name: "<light_purple>This Month's Challenges"
+#      lore:
+#        - "<dark_purple>These reset each month on the 1st 6PM EST! Complete them now to earn rewards!"
+#      board: "monthly"
